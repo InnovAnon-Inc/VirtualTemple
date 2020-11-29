@@ -5,23 +5,24 @@ let roomIdData = [];
 let peerConnection;
 
 let configuration = {
-    'iceServers': [
-      {'urls': 'stun:stun.services.mozilla.com'},
-      {'urls': 'stun:stun.l.google.com:19302',
+    iceServers: [
+      {urls: 'stun:stun.services.mozilla.com'},
+      {urls: ['stun:stun.l.google.com:19302',
                'stun1.l.google.com:19302',
                'stun2.l.google.com:19302',
                'stun3.l.google.com:19302',
-               'stun4.l.google.com:19302'},
-      {'urls': 'stun.ekiga.net'},
-      {'urls': 'stun.ideasip.com'},
-      {'urls': 'stun.rixtelecom.se'},
-      {'urls': 'stun.schlund.de'},
-      {'urls': 'stun.stunprotocol.org:3478'},
-      {'urls': 'stun.voiparound.com'},
-      {'urls': 'stun.voipbuster.com'},
-      {'urls': 'stun.voipstunt.com'},
-      {'urls': 'stun.voxgratia.org'}
-    ]
+               'stun4.l.google.com:19302',]},
+      {urls: 'stun.ekiga.net'},
+      {urls: 'stun.ideasip.com'},
+      {urls: 'stun.rixtelecom.se'},
+      {urls: 'stun.schlund.de'},
+      {urls: 'stun.stunprotocol.org:3478'},
+      {urls: 'stun.voiparound.com'},
+      {urls: 'stun.voipbuster.com'},
+      {urls: 'stun.voipstunt.com'},
+      {urls: 'stun.voxgratia.org'},
+    ],
+    iceCandidatePoolSize: 10,
   }
 
 //Reference to the Buttons
