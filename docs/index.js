@@ -193,8 +193,8 @@ function unload() {
     for (let i = 0; i < localTracks.length; i++) {
         localTracks[i].dispose();
     }
-    room.leave();
-    connection.disconnect();
+    if (room       != null) room      .leave();
+    if (connection != null) connection.disconnect();
 }
 
 let isVideo = true;
