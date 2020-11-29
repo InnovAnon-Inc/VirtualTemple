@@ -11,10 +11,10 @@ const createButtonFunc = async () => {
 
     peerConnection.addEventListener("icecandidate", event => {
       if(!event.candidate){
-       //  console.log("Got Final Candidate!");
+        console.log("Got Final Candidate!");
         return;
       }
-     //  console.log('Got candidate: ', event.candidate);
+     console.log('Got candidate: ', event.candidate);
      callerCandidatesCollection.add(event.candidate.toJSON());
     })
     // Code for collecting ICE candidates above
@@ -37,9 +37,9 @@ const createButtonFunc = async () => {
      // Code for creating a room above
 
      peerConnection.addEventListener("track", event => {
-        // console.log('Got remote track:', event.streams[0]);
+        console.log('Got remote track:', event.streams[0]);
         event.streams[0].getTracks().forEach(track => {
-          // console.log('Add a track to the remoteStream:', track);
+          console.log('Add a track to the remoteStream:', track);
           remoteStream.addTrack(track);
         })
        })
@@ -50,7 +50,7 @@ const createButtonFunc = async () => {
         if(peerConnection.iceConnectionState !== "closed"){
 
           if(!peerConnection.currentRemoteDescription && data && data.answer){
-            // console.log('Got remote description: ', data.answer);
+          console.log('Got remote description: ', data.answer);
           const rtcSessionDescription = new RTCSessionDescription(data.answer);
           await peerConnection.setRemoteDescription(rtcSessionDescription);
           }
@@ -64,7 +64,7 @@ const createButtonFunc = async () => {
         snapshot.docChanges().forEach(async change => {
           if (change.type === 'added') {
             let data = change.doc.data();
-            // console.log(`Got new remote ICE candidate: ${JSON.stringify(data)}`);
+            console.log(`Got new remote ICE candidate: ${JSON.stringify(data)}`);
             await peerConnection.addIceCandidate(new RTCIceCandidate(data));
           }
         });

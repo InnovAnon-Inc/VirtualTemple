@@ -15,28 +15,28 @@ const joinButtonFunc = async () => {
         const calleeCandidatesCollection = roomRef.collection("calleCandidates");
         peerConnection.addEventListener("icecandidate", event => {
           if(!event.candidate){
-            // console.log('Got final candidate!');
+            console.log('Got final candidate!');
             return;
           }
-          // console.log('Got candidate: ', event.candidate);
+          console.log('Got candidate: ', event.candidate);
           calleeCandidatesCollection.add(event.candidate.toJSON());
         })
         // Code for collecting ICE candidates above
 
         peerConnection.addEventListener("track", event => {
-            // console.log('Got remote track:', event.streams[0]);
+            console.log('Got remote track:', event.streams[0]);
             event.streams[0].getTracks().forEach(track => {
-              // console.log('Add a track to the remoteStream:', track);
+              console.log('Add a track to the remoteStream:', track);
               remoteStream.addTrack(track);
             })
         })
 
         // Code for creating SDP answer below
         const offer = roomSnapshot.data().offer;
-        // console.log('Got offer:', offer);
+        console.log('Got offer:', offer);
         await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
         const answer = await peerConnection.createAnswer();
-        //   console.log('Created answer:', answer);
+        console.log('Created answer:', answer);
         await peerConnection.setLocalDescription(answer);
 
         const roomWithAnswer = {
@@ -53,7 +53,7 @@ const joinButtonFunc = async () => {
         snapshot.docChanges().forEach(async change => {
             if (change.type === 'added') {
             let data = change.doc.data();
-            // console.log(`Got new remote ICE candidate: ${JSON.stringify(data)}`);
+            console.log(`Got new remote ICE candidate: ${JSON.stringify(data)}`);
             await peerConnection.addIceCandidate(new RTCIceCandidate(data));
             }
         });
