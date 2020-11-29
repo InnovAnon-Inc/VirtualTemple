@@ -1,42 +1,35 @@
-version: 2.1 # use CircleCI 2.0
-
-orbs:
-  jira: circleci/jira@1.0.5
-  node: circleci/node@3.0.0
-
-#workflows:
-#  node-tests:
-#    jobs:
-#      - node/test
-
-jobs: # A basic unit of work in a run
-  dist: # runs not using Workflows must have a `build` job as entry point 
-    # directory where steps are run
-    #working_directory: ~/circleci-VirtualTemple
-    docker: # run the steps with Docker
-      # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
+# https://circleci.com/blog/automatically-deploy-a-gatsby-site-to-firebase-hosting/
+# CircleCI Firebase Deployment Config
+version: 2.1
+jobs:
+  build:
+    docker:
       - image: circleci/node:latest
         auth:
           username: $DOCKERHUB_USERNAME
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps: # steps that comprise the `build` job
-      - checkout # check out source code to working directory
+          password: $DOCKERHUB_PASSWORD
+    working_directory: ~/circleci-VirtualTemple
+    steps:
+      - checkout
       - run: git submodule sync
       - run: git submodule update --init
+      - restore_cache:
+          keys:
+            # Find a cache corresponding to this specific package-lock.json
+            - v1-npm-deps-{{ checksum "package-lock.json" }}
+            # Fallback cache to be used
+            - v1-npm-deps-
       - run:
-          name: Deploying
-          command: |
-            firebase deploy --only hosting
-
-workflows:
-  version: 2.0
-  do_everything:
-    jobs:
-      - dist:
-          #requires:
-          #  - test
-          filters:
-            branches:
-              ignore:
-                - gh-pages
-      
+          name: Install Dependencies
+          command: npm install
+      - save_cache:
+          key: v1-npm-deps-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Gatsby Build
+          command: npm run build
+      - run:
+          name: Firebase Deploy
+          # --only hosting ?
+          command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
