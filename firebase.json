@@ -3,6 +3,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
+    "site": "virtual-temple",
     "public": "public",
     "ignore": [
       "firebase.json",
