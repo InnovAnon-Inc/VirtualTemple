@@ -15,6 +15,6 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-//let firestore = firebase.firestore();
+let firestore = firebase.firestore();
 
 console.log(firebase.app().name);  // "[DEFAULT]"
