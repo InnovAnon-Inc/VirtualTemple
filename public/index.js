@@ -4,8 +4,10 @@ let roomId;
 let roomIdData = [];
 let peerConnection;
 
+var freeice = require('freeice');
+
 let configuration = {
-    iceServers: [
+    /*iceServers: [
       {urls: 'stun:stun.services.mozilla.com'},
       {urls: ['stun:stun.l.google.com:19302',
               'stun:stun1.l.google.com:19302',
@@ -21,7 +23,8 @@ let configuration = {
       {urls: 'stun:stun.voipbuster.com'},
       {urls: 'stun:stun.voipstunt.com'},
       {urls: 'stun:stun.voxgratia.org'},
-    ],
+    ],*/
+    iceServers: freeice(),
     iceCandidatePoolSize: 10,
   }
 
