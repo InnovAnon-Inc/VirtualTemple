@@ -4,7 +4,7 @@ let roomId;
 let roomIdData = [];
 let peerConnection;
 
-var freeice = require('freeice');
+const freeice = require('freeice');
 
 let configuration = {
     /*iceServers: [
@@ -24,7 +24,7 @@ let configuration = {
       {urls: 'stun:stun.voipstunt.com'},
       {urls: 'stun:stun.voxgratia.org'},
     ],*/
-    iceServers: freeice(),
+    iceServers: freeice({stun: 2}),
     iceCandidatePoolSize: 10,
   }
 
