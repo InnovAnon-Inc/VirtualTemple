@@ -220,7 +220,7 @@ function switchVideo() { // eslint-disable-line no-unused-vars
                 JitsiMeetJS.events.track.LOCAL_TRACK_STOPPED,
                 () => console.log('local track stoped'));
             localTracks[1].attach($('#localVideo1')[0]);
-            room.addTrack(localTracks[1]);
+            if (room != null) room.addTrack(localTracks[1]);
         })
         .catch(error => console.log(error));
 }
