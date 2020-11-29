@@ -15,6 +15,7 @@ let configuration = {
               //'stun:stun2.l.google.com:19302',
               //'stun:stun3.l.google.com:19302',
               //'stun:stun4.l.google.com:19302',]},
+              ]},
       //{urls: 'stun:stun.ekiga.net'},
       //{urls: 'stun:stun.ideasip.com'},
       //{urls: 'stun:stun.rixtelecom.se'},
