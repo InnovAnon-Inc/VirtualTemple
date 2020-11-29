@@ -1,0 +1,36 @@
+version: 2.1 # use CircleCI 2.0
+
+orbs:
+  jira: circleci/jira@1.0.5
+
+jobs: # A basic unit of work in a run
+  dist: # runs not using Workflows must have a `build` job as entry point 
+    # directory where steps are run
+    #working_directory: ~/circleci-VirtualTemple
+    docker: # run the steps with Docker
+      # CircleCI Python images available at: https://hub.docker.com/r/circleci/python/
+      - image: circleci/node:latest
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps: # steps that comprise the `build` job
+      - checkout # check out source code to working directory
+      - run: git submodule sync
+      - run: git submodule update --init
+      - run:
+          name: Deploying
+          command: |
+            firebase deploy --only hosting
+
+workflows:
+  version: 2.0
+  do_everything:
+    jobs:
+      - dist:
+          #requires:
+          #  - test
+          filters:
+            branches:
+              ignore:
+                - gh-pages
+      
