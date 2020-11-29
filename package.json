@@ -1,8 +1,5 @@
 {
-  "devDependencies": {
-    "firebase-tools": "^8.16.2"
-  },
   "dependencies": {
-    "freeice": "^2.2.2"
+    "lib-jitsi-meet": "^1.0.6"
   }
 }

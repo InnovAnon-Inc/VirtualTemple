@@ -9,21 +9,19 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     <script src='https://meet.jit.si/external_api.js'></script>
-	<script>
-	const domain = 'meet.jit.si';
-	const options = {
-		roomName: 'JitsiMeetAPIExample',
-		width: 700,
-		height: 700,
-		parentNode: document.querySelector('#meet')
-	};
-	const api = new JitsiMeetExternalAPI(domain, options);
-	</script>
+	<script src='./index.js'></script>
 	
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 	<h1>Welcome to the Virtual Temple</h1>
-	
+	<a href="#" onclick="unload()">Unload</a>
+    <a href="#" onclick="switchVideo()">switchVideo</a>
+    <div id="audioOutputSelectWrapper" style="display: none;">
+        Change audio output device
+        <select id="audioOutputSelect" onchange="changeAudioOutput(this)"></select>
+    </div>
+    <!-- <video id="localVideo" autoplay="true"></video> -->
+    <!--<audio id="localAudio" autoplay="true" muted="true"></audio>-->
 </body>
 </html>
