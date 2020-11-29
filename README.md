@@ -18,6 +18,12 @@ The solution to this codelab can be seen in the _solution_ branch.
 
 See http://webrtc.org for details.
 
+Most of the code copied from https://dev.to/g4rry420/video-chat-with-webrtc-and-firebase-1mik
+
+## Status
+Project abandoned until WebRTC+Firebase are production ready
+https://github.com/webrtc/FirebaseRTC/issues/3
+
 # Innovations Anonymous
 Free Code for a Free World!
 ==========
