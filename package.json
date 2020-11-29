@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "jquery": "^3.5.1",
     "lib-jitsi-meet": "^1.0.6"
   }
 }
