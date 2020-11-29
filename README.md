@@ -24,7 +24,7 @@ Most of the code copied from https://dev.to/g4rry420/video-chat-with-webrtc-and-
 Project abandoned until WebRTC+Firebase are production-ready:
 https://github.com/webrtc/FirebaseRTC/issues/3
 
-Update project re-abandoned until Jitsi is production-ready.
+Update project re-abandoned until Jitsi/JQuery are production-ready.
 
 # Innovations Anonymous
 Free Code for a Free World!
