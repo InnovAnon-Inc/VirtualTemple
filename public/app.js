@@ -1,6 +1,5 @@
 mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button'));
 
-// Default configuration - Change these if you have a different STUN or TURN server.
 const configuration = {
   iceServers: [
     {
@@ -31,19 +30,29 @@ async function createRoom() {
   document.querySelector('#createBtn').disabled = true;
   document.querySelector('#joinBtn').disabled = true;
   const db = firebase.firestore();
+  const roomRef = await db.collection('rooms').doc();
 
   console.log('Create PeerConnection with configuration: ', configuration);
   peerConnection = new RTCPeerConnection(configuration);
 
   registerPeerConnectionListeners();
 
-  // Add code for creating a room here
-  
-  // Code for creating room above
-  
   localStream.getTracks().forEach(track => {
     peerConnection.addTrack(track, localStream);
   });
+
+  // Code for collecting ICE candidates below
+  const callerCandidatesCollection = roomRef.collection('callerCandidates');
+
+  peerConnection.addEventListener('icecandidate', event => {
+    if (!event.candidate) {
+      console.log('Got final candidate!');
+      return;
+    }
+    console.log('Got candidate: ', event.candidate);
+    callerCandidatesCollection.add(event.candidate.toJSON());
+  });
+  // Code for collecting ICE candidates above
 
   // Code for creating a room below
   const offer = await peerConnection.createOffer();
@@ -62,19 +71,6 @@ async function createRoom() {
   document.querySelector(
       '#currentRoom').innerText = `Current room is ${roomRef.id} - You are the caller!`;
   // Code for creating a room above
-
-  // Code for collecting ICE candidates below
-  const callerCandidatesCollection = roomRef.collection('callerCandidates');
-
-  peerConnection.addEventListener('icecandidate', event => {
-    if (!event.candidate) {
-      console.log('Got final candidate!');
-      return;
-    }
-    console.log('Got candidate: ', event.candidate);
-    callerCandidatesCollection.add(event.candidate.toJSON());
-  });
-  // Code for collecting ICE candidates above
 
   peerConnection.addEventListener('track', event => {
     console.log('Got remote track:', event.streams[0]);
@@ -231,11 +227,11 @@ async function hangUp(e) {
     const roomRef = db.collection('rooms').doc(roomId);
     const calleeCandidates = await roomRef.collection('calleeCandidates').get();
     calleeCandidates.forEach(async candidate => {
-      await candidate.delete();
+      await candidate.ref.delete();
     });
     const callerCandidates = await roomRef.collection('callerCandidates').get();
     callerCandidates.forEach(async candidate => {
-      await candidate.delete();
+      await candidate.ref.delete();
     });
     await roomRef.delete();
   }
