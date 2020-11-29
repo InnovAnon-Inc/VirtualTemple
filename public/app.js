@@ -1,3 +1,16 @@
+//Create an account on Firebase, and use the credentials they give you in place of the following
+var config = {
+  apiKey: " AIzaSyDamvQgNL8UpubL3HTsW14bExCIGtTyePY",
+  authDomain: "virtual-temple.firebaseapp.com",
+  databaseURL: "https://virtual-temple.firebaseio.com",
+  projectId: "virtual-temple",
+  storageBucket: "virtual-temple.appspot.com",
+  messagingSenderId: "799663626723",
+};
+firebase.initializeApp(config);
+
+
+
 mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-button'));
 
 const configuration = {
