@@ -17,7 +17,10 @@
   "keywords": [
     "webrtc"
   ],
-  "author": "shane tully",
+  "author": {
+      "name": "InnovAnon, Inc.",
+      "email": "InnovAnon-Inc@protonmail.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/InnovAnon-Inc/VirtualTemple/issues"
