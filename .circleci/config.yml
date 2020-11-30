@@ -71,6 +71,10 @@ jobs:
           name: Publish Package
           command: |
             npm publish
+      - run:
+          name: Notify DockerHub
+          command: |
+            curl -X POST "$DOCKERHUB_TRIGGER"
 
 workflows:
   version: 2
