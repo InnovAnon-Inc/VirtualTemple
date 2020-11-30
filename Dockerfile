@@ -1,10 +1,10 @@
-# Use the official image as a parent image.
-ARG OS
-ARG VER
-FROM $OS:$VER
-ARG OS
-ARG VER
-RUN echo FROM ${OS}:${VER} 1>&2
+#ARG OS
+#ARG VER
+#FROM $OS:$VER
+#ARG OS
+#ARG VER
+#RUN echo FROM ${OS}:${VER} 1>&2
+FROM node:latest
 
 MAINTAINER Innovations Anonymous <InnovAnon-Inc@protonmail.com>
 LABEL version="1.0"                                                     \
