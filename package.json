@@ -1,6 +1,6 @@
 {
   "name": "virtual-temple",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "An 'as simple as it gets' WebRTC example.",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/InnovAnon-Inc/VirtualTemple#readme",
   "dependencies": {
-    "ws": "^3.3.2"
+    "ws": "^7.4.0"
   },
   "devDependencies": {
     "standard": "^16.0.3"

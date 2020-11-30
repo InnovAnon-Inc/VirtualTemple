@@ -44,7 +44,7 @@ jobs:
             echo "https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com" > ~/.git-credentials
             #npm version patch
             
-            majmin=`grep '^ *"version" *: *' package.json | grep -o '[0-9]*\.[0-9]*'`
+            majmin=`grep '^ *"version" *: *' package.json | grep -o '[0-9]*\.[0-9]*' | head -n 1`
             echo "$majmin"
 
             [ ! -z "`git tag`" ]                                   || git tag v$manmin
