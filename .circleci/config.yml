@@ -67,7 +67,7 @@ jobs:
           command: |
             if find . -name .npmignore | grep -q . ; then false ; else true ; fi
             npm pack
-            tar -vtf *.tgz > audit
+            tar -vtf *.tgz | tee audit
             if grep -q -e run -e .circleci -e '\\.pem' audit ; then false ; else true ; fi
             rm  -v   *.tgz   audit
       - run:
