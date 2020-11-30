@@ -1,6 +1,6 @@
 {
   "name": "virtual-temple",
-  "version": "",
+  "version": "1.0.1",
   "description": "An 'as simple as it gets' WebRTC example.",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,8 @@
     "webrtc"
   ],
   "author": {
-      "name": "InnovAnon, Inc.",
-      "email": "InnovAnon-Inc@protonmail.com"
+    "name": "InnovAnon, Inc.",
+    "email": "InnovAnon-Inc@protonmail.com"
   },
   "license": "Unlicense <http://unlicense.org/>",
   "bugs": {
