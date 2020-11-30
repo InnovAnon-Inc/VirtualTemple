@@ -20,6 +20,13 @@ Post-COVID Congregational Technologies
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
 ![Libraries.io SourceRank](https://img.shields.io/librariesio/sourcerank/npm/virtual-temple?style=plastic)
 
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/innovanon/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/innovanon/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
+![Docker Pulls](https://img.shields.io/docker/pulls/innovanon/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
+![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/innovanon/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
+![Docker Stars](https://img.shields.io/docker/stars/innovanon/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/innovanon/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
+
 Video conferencing server for group meditation sessions and other congregational activities.
 
 ### TODO
