@@ -65,7 +65,7 @@ jobs:
       - run: # https://medium.com/@jdxcode/for-the-love-of-god-dont-use-npmignore-f93c08909d8d
           name: For the Love of God
           command: |
-            if find . -name .npmignore | grep -q . ; then false ; else true ; fi
+            #if find . -name .npmignore | grep -q . ; then false ; else true ; fi
             npm pack
             tar -vtf *.tgz | tee audit
             if grep -q -e run -e .circleci -e '\\.pem' audit ; then false ; else true ; fi
