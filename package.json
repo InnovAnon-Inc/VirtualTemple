@@ -31,10 +31,5 @@
   },
   "devDependencies": {
     "standard": "^16.0.3"
-  },
-  "files": [
-    "client",
-    "server",
-    "test"
-  ]
+  }
 }
