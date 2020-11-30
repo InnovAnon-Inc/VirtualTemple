@@ -1,9 +1,0 @@
-node_modules
-npm-debug.log
-
-# don't clobber my keys
-*.pem
-
-*.tgz
-audit
-
