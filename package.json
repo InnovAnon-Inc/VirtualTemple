@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server/server.js",
     "lint": "standard",
-    "test": "node test/my-tests.js",
+    "test": "node test/my-test.js",
     "posttest": "npm run lint",
     "predeploy": "npm test"
   },
