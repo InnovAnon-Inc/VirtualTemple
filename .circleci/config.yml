@@ -46,18 +46,12 @@ jobs:
             #npm version patch
             
             majmin=`grep '^ *"version" *: *' package.json | grep -o '[0-9]*\.[0-9]*' | head -n 1`
-            echo "$majmin"
 
             [ ! -z "`git tag`" ]                                   || git tag v$manmin
             git describe --tags --long | grep -q '^v[^.]*\.[^.-]*' || git tag v$majmin
 
             revisioncount=`git log --oneline | wc -l`
-            echo "$revisioncount"
-            #cleanversion="`git describe --tags --long | grep -o '^v[^.]*\.[^.-]*' | sed s/^v//`"
-            #echo "$cleanversion"
-            #VERSION="$cleanversion.$revisioncount"
             VERSION="$majmin.$revisioncount"
-            echo "$VERSION"
 
             npm version "$VERSION"
       - run:
@@ -68,6 +62,14 @@ jobs:
             #./node_modules/.bin/firebase login --reauth --token "$FIREBASE_TOKEN"
             #./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --non-interactive --only hosting
             echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+      - run: # https://medium.com/@jdxcode/for-the-love-of-god-dont-use-npmignore-f93c08909d8d
+          name: For the Love of God
+          command: |
+            if find . -name .npmignore | grep -q . ; then false ; else true ; fi
+            npm pack
+            tar -vtf *.tgz > audit
+            if grep -q -e run -e .circleci -e '\\.pem' audit ; then false ; else true ; fi
+            rm  -v   *.tgz   audit
       - run:
           name: Publish Package
           command: |
