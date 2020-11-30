@@ -5,3 +5,5 @@ npm-debug.log
 *.pem
 
 *.tgz
+audit
+
