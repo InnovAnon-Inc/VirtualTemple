@@ -52,9 +52,10 @@ jobs:
 
             revisioncount=`git log --oneline | wc -l`
             echo "$revisioncount"
-            cleanversion="`git describe --tags --long | grep -o '^v[^.]*\.[^.-]*' | sed s/^v//`"
-            echo "$cleanversion"
-            VERSION="$cleanversion.$revisioncount"
+            #cleanversion="`git describe --tags --long | grep -o '^v[^.]*\.[^.-]*' | sed s/^v//`"
+            #echo "$cleanversion"
+            #VERSION="$cleanversion.$revisioncount"
+            VERSION="$majmin.$revisioncount"
             echo "$VERSION"
 
             npm version "$VERSION"
