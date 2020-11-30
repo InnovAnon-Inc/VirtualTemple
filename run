@@ -1,0 +1,18 @@
+#! /usr/bin/env bash
+set -euo pipefail
+
+npm install -g virtual-temple
+cd /usr/lib/node_modules/virtual-temple
+
+[[ -f key.pem ]] ||
+cp -v /opt/keys/lmaddox.chickenkiller.com.pvk.pem key.pem
+[[ -f cert.pem ]] ||
+cp -v /opt/keys/lmaddox.chickenkiller.com.chain.pem cert.pem
+sudo chown nobody:nogroup *.pem
+
+#npm install --production
+
+# -l
+HOME=/srv exec chpst -u nobody:nogroup -- \
+  npm start --host 0.0.0.0 2>&1
+
