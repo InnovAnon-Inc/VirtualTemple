@@ -10,6 +10,9 @@
     "posttest": "npm run lint",
     "predeploy": "npm test"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/InnovAnon-Inc/VirtualTemple.git"
