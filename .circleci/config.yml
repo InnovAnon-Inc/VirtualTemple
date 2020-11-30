@@ -37,6 +37,10 @@ jobs:
       #    name: Gatsby Build
       #    command: npm run build
       - run:
+          name: Autoversioning
+          command: |
+            npm version patch
+      - run:
           name: Authenticate with Registry
           # --only hosting ?
           #command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
