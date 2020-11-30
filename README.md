@@ -18,6 +18,7 @@ Post-COVID Congregational Technologies
 ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/npm/virtual-temple?color=FF1100&style=plastic)
 ![npm collaborators](https://img.shields.io/npm/collaborators/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
 ![Snyk Vulnerabilities for npm package](https://img.shields.io/snyk/vulnerabilities/npm/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
+![Libraries.io SourceRank](https://img.shields.io/librariesio/sourcerank/npm/virtual-temple?style=plastic)
 
 Video conferencing server for group meditation sessions and other congregational activities.
 
