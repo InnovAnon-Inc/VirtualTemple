@@ -39,6 +39,9 @@ jobs:
       - run:
           name: Autoversioning
           command: |
+            git config --global user.email "$GITHUB_EMAIL"
+            git config --global user.name  "$GITHUB_NAME"
+            echo "https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com" > ~/.git-credentials
             npm version patch
       - run:
           name: Authenticate with Registry
