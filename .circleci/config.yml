@@ -35,5 +35,6 @@ jobs:
           #command: ./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN"
           command: |
             #./node_modules/.bin/firebase login --reauth --token "$FIREBASE_TOKEN"
-            echo "$FIREBASE_TOKEN"
             #./node_modules/.bin/firebase deploy --token "$FIREBASE_TOKEN" --non-interactive --only hosting
+            #npm install --production
+            npm ci
