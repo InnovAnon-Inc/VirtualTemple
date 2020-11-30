@@ -42,7 +42,8 @@ jobs:
             git config --global user.email "$GITHUB_EMAIL"
             git config --global user.name  "$GITHUB_NAME"
             echo "https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com" > ~/.git-credentials
-            npm version patch
+            #npm version patch
+            npm version from-git
       - run:
           name: Authenticate with Registry
           # --only hosting ?

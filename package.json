@@ -1,6 +1,6 @@
 {
   "name": "virtual-temple",
-  "version": "1.0.1",
+  "version": "",
   "description": "An 'as simple as it gets' WebRTC example.",
   "main": "index.js",
   "scripts": {
