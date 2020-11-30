@@ -43,7 +43,15 @@ jobs:
             git config --global user.name  "$GITHUB_NAME"
             echo "https://$GITHUB_USERNAME:$GITHUB_TOKEN@github.com" > ~/.git-credentials
             #npm version patch
-            npm version from-git
+            majmin=`grep '^ *"version" *: *' package.json | grep -o '[0-9]*\.[0-9]*'`
+
+            [ ! -z "`git tag`" ]                                   || git tag v$manmin
+            git describe --tags --long | grep -q '^v[^.]*\.[^.-]*' || git tag v$majmin
+
+            revisioncount=`git log --oneline | wc -l`
+            cleanversion="`git describe --tags --long | grep -o '^v[^.]*\.[^.-]*' | sed s/^v//`"
+            VERSION="$cleanversion.$revisioncount"
+            npm version "$VERSION"
       - run:
           name: Authenticate with Registry
           # --only hosting ?
