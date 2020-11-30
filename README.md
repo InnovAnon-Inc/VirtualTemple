@@ -18,13 +18,13 @@ Video conferencing server for group meditation sessions and other congregational
 ### Usage
 - runit:
     ```
-    mkdir         /etc/sv/virtual-temple        &&
+    sudo mkdir         /etc/sv/virtual-temple        &&
     curl https://raw.githubusercontent.com/InnovAnon-Inc/VirtualTemple/master/run |
-    sudo tee      /etc/sv/virtual-temple/run    &&
-    sudo chmod +x /etc/sv/virtual-temple/run    &&
-    ln -s {/etc/sv,/var/service}/virtual-temple &&
-    sv enable virtual-temple                    &&
-    sv start  virtual-temple
+    sudo tee      /etc/sv/virtual-temple/run         &&
+    sudo chmod +x /etc/sv/virtual-temple/run         &&
+    sudo ln -s {/etc/sv,/var/service}/virtual-temple &&
+    sudo sv enable virtual-temple                    &&
+    sudo sv start  virtual-temple
     ```
 
 ### Credits
