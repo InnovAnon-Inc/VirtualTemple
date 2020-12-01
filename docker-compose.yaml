@@ -27,3 +27,6 @@ services:
 #        aliases:
 #          - virtual-temple.innovanon.com
 
+networks:
+  innovanon:
+
