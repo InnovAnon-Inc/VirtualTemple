@@ -1,14 +1,14 @@
 const HTTPS_PORT = 8443
 
 const fs = require('fs')
-const https = require('https')
+const http = require('http')
 const WebSocket = require('ws')
 const WebSocketServer = WebSocket.Server
 
 // Yes, TLS is required
 const serverConfig = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
+  //key: fs.readFileSync('key.pem'),
+  //cert: fs.readFileSync('cert.pem')
 }
 
 // ----------------------------------------------------------------------------------------
@@ -27,7 +27,7 @@ const handleRequest = function (request, response) {
   }
 }
 
-const httpsServer = https.createServer(serverConfig, handleRequest)
+const httpsServer = http.createServer(serverConfig, handleRequest)
 httpsServer.listen(HTTPS_PORT, '0.0.0.0')
 
 // ----------------------------------------------------------------------------------------
