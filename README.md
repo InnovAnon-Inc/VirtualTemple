@@ -27,8 +27,6 @@ Post-COVID Congregational Technologies
 ![Docker Stars](https://img.shields.io/docker/stars/innovanon/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
 ![Docker Image Version (latest by date)](https://img.shields.io/docker/v/innovanon/virtual-temple?color=FF1100&logo=InnovAnon%2C%20Inc.&logoColor=FF1133&style=plastic)
 
-![Docker](https://github.com/InnovAnon-Inc/VirtualTemple/workflows/Docker/badge.svg)
-
 [![dockeri.co](https://dockeri.co/image/innovanon/virtual-temple)](https://hub.docker.com/r/innovanon/virtual-temple/)
 
 Video conferencing server for group meditation sessions and other congregational activities.
