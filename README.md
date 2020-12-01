@@ -36,12 +36,18 @@ Video conferencing server for group meditation sessions and other congregational
 - runit:
     ```
     sudo mkdir    /etc/sv/virtual-temple              &&
-    curl https://raw.githubusercontent.com/InnovAnon-Inc/VirtualTemple/master/run |
+    curl -L https://raw.githubusercontent.com/InnovAnon-Inc/VirtualTemple/runit/run |
     sudo tee      /etc/sv/virtual-temple/run          &&
     sudo chmod +x /etc/sv/virtual-temple/run          &&
     sudo ln -s    /etc/sv/virtual-temple /var/service &&
     sudo sv enable virtual-temple                     &&
     sudo sv start  virtual-temple
+    ```
+- docker:
+    ```
+    curl -L https://raw.githubusercontent.com/InnovAnon-Inc/VirtualTemple/docker/docker-compose.yaml |
+    tee docker-compose.yaml                           &&
+    docker stack deploy --compose-file docker-compose.yaml virtual-temple
     ```
 
 ### Credits
