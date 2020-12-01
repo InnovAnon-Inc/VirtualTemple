@@ -1,11 +1,11 @@
 #! /usr/bin/env bash
 set -euo pipefail
 
-npm install -g virtual-temple
+npm install -g --production virtual-temple
 cd /usr/lib/node_modules/virtual-temple
-#npm install --production
 
 # -l
-HOME=/srv exec chpst -u nobody:nogroup -- \
-  npm start --host 0.0.0.0 2>&1
+HOME=/srv exec             \
+chpst -u nobody:nogroup -- \
+npm start 2>&1
 
