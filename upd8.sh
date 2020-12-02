@@ -13,5 +13,5 @@ docker pull innovanon/virtual-temple:latest
 docker service update \
     --with-registry-auth \
     --image innovanon/virtual-temple:latest \
-    "$PROJECT"
+    "$PROJECT"_"$PROJECT"
 

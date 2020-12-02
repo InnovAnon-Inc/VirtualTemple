@@ -1,10 +1,12 @@
-#ARG OS
-#ARG VER
-#FROM $OS:$VER
-#ARG OS
-#ARG VER
-#RUN echo FROM ${OS}:${VER} 1>&2
-FROM node:latest
+FROM node:latest as builder
+
+RUN npm update  -g --production                         && \
+    npm install -g --production node-gyp                && \
+    npm install -g --production          virtual-temple && \
+    test -d  /usr/local/lib/node_modules/virtual-temple && \
+    mkdir -v /usr/local/lib/node_modules/virtual-temple/ssl
+
+FROM node:latest-alpine
 
 MAINTAINER Innovations Anonymous <InnovAnon-Inc@protonmail.com>
 LABEL version="1.0"                                                     \
@@ -18,10 +20,6 @@ LABEL version="1.0"                                                     \
       org.label-schema.vcs-type="Git"                                   \
       org.label-schema.vcs-url="https://github.com/InnovAnon-Inc/VirtualTemple"
 
-# disable interactivity
-ARG  DEBIAN_FRONTEND=noninteractive
-ENV  DEBIAN_FRONTEND=${DEBIAN_FRONTEND}
-
 # localization
 ARG  TZ=UTC
 ENV  TZ=${TZ}
@@ -30,12 +28,14 @@ ENV  LANG=${LANG}
 ARG  LC_ALL=C.UTF-8
 ENV  LC_ALL=${LC_ALL}
 
-RUN npm update  -g --production                         && \
-    npm install -g --production          virtual-temple && \
-    test -d  /usr/local/lib/node_modules/virtual-temple && \
-    mkdir -v /usr/local/lib/node_modules/virtual-temple/ssl
-WORKDIR      /usr/local/lib/node_modules/virtual-temple
-VOLUME       /usr/local/lib/node_modules/virtual-temple/ssl
+COPY --chown=node --from=builder /usr/local/lib/node_modules/ /usr/local/lib/node_modules/
+
+USER node
+WORKDIR /usr/local/lib/node_modules/virtual-temple
+VOLUME  /usr/local/lib/node_modules/virtual-temple/ssl
+
+ENV NODE_ENV production
 EXPOSE 31443
 ENTRYPOINT ["/usr/bin/env", "npm", "start"]
+#CMD ["--host", "0.0.0.0"]
 
