@@ -1,32 +1,21 @@
 version: '3.3'
 services:
   virtual-temple:
-    build:
-      context: .
-      args:
-        OS:  "node"
-        VER: "latest"
-#    depends_on:
-#      - apt-cacher-ng
     #hostname:         virtual-temple
-    image: "innovanon/virtual-temple:latest"
     #container_name:  "virtual-temple"
-#    extends:
-#      file:    ubuntu-latest.yaml
-#      service: ubuntu
-#    links:
-#    - "apt-cacher-ng:apt-cacher-ng"
+    image: "innovanon/virtual-temple:latest"
     networks:
       innovanon:
         aliases:
           - virtual-temple.innovanon.com
-#      acng:
-#        aliases:
-#          - virtual-temple.innovanon.com
-#      netselect:
-#        aliases:
-#          - virtual-temple.innovanon.com
+    ports:
+      - "31443:31443"
+    volumes:
+      - innovanon:/usr/lib/node_modules/virtual-temple/ssl:ro
 
 networks:
+  innovanon:
+
+volumes:
   innovanon:
 

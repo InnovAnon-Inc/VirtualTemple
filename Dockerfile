@@ -30,11 +30,11 @@ ENV  LANG=${LANG}
 ARG  LC_ALL=C.UTF-8
 ENV  LC_ALL=${LC_ALL}
 
-RUN npm update -g
-RUN npm install -g --production virtual-temple
+RUN npm update  -g --production
+RUN npm install -g --production         virtual-temple
 RUN test -d /usr/local/lib/node_modules/virtual-temple
-WORKDIR /usr/local/lib/node_modules/virtual-temple
+WORKDIR     /usr/local/lib/node_modules/virtual-temple
+VOLUME      /usr/local/lib/node_modules/virtual-temple/ssl
 EXPOSE 31443
-# TODO maybe a volume for keys
 ENTRYPOINT ["/usr/bin/env", "npm", "start"]
 
