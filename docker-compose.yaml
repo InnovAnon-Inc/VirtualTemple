@@ -12,6 +12,9 @@ services:
       - "31443:31443"
     volumes:
       - innovanon:/usr/lib/node_modules/virtual-temple/ssl:ro
+    deploy:
+      mode: replicated
+      replicas: 2
 
 networks:
   innovanon:
