@@ -6,7 +6,7 @@ RUN npm update  -g --production                         && \
     test -d  /usr/local/lib/node_modules/virtual-temple && \
     mkdir -v /usr/local/lib/node_modules/virtual-temple/ssl
 
-FROM node:latest-alpine
+FROM node:current-alpine
 
 MAINTAINER Innovations Anonymous <InnovAnon-Inc@protonmail.com>
 LABEL version="1.0"                                                     \
