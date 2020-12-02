@@ -34,6 +34,7 @@ RUN npm update -g
 RUN npm install -g --production virtual-temple
 RUN test -d /usr/local/lib/node_modules/virtual-temple
 WORKDIR /usr/local/lib/node_modules/virtual-temple
-EXPOSE 8443
-ENTRYPOINT ["/usr/bin/env", "npm", "start", "--host", "0.0.0.0"]
+EXPOSE 31443
+# TODO maybe a volume for keys
+ENTRYPOINT ["/usr/bin/env", "npm", "start"]
 
