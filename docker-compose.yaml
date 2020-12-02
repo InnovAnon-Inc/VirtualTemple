@@ -7,14 +7,15 @@ services:
     networks:
       innovanon:
         aliases:
-          - virtual-temple.innovanon.com
+          - virtual-temple
     ports:
       - "31443:31443"
     volumes:
-      - innovanon:/usr/lib/node_modules/virtual-temple/ssl:ro
+      - innovanon:/usr/local/lib/node_modules/virtual-temple/ssl:ro
     deploy:
       mode: replicated
       replicas: 2
+      #update-delay: 10s
 
 networks:
   innovanon:
