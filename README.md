@@ -45,11 +45,15 @@ Video conferencing server for group meditation sessions and other congregational
     sudo sv enable virtual-temple                     &&
     sudo sv start  virtual-temple
     ```
-- docker:
+- docker (TODO):
     ```
     curl -L https://raw.githubusercontent.com/InnovAnon-Inc/VirtualTemple/docker/docker-compose.yaml |
     tee docker-compose.yaml                           &&
     docker stack deploy --compose-file docker-compose.yaml virtual-temple
+    ```
+- docker:
+    ```
+    docker service create --name virtual-temple -p 31443:31443 innovanon/virtual-temple:latest
     ```
 
 ### Credits
