@@ -5,7 +5,7 @@ services:
     #container_name:  "virtual-temple"
     image: "innovanon/virtual-temple:latest"
     networks:
-      innovanon:
+      virtual-temple:
         aliases:
           - virtual-temple
     ports:
@@ -14,14 +14,14 @@ services:
     #  - innovanon:/usr/local/lib/node_modules/virtual-temple/ssl:ro
     deploy:
       mode: replicated
-      replicas: 2
+      replicas: 1
       #update-delay: 10s
     secrets:
       - key.pem
       - cert.pem
 
 networks:
-  innovanon:
+  virtual-temple:
 
 #volumes:
 #  innovanon:
