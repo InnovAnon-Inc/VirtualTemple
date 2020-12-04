@@ -10,16 +10,25 @@ services:
           - virtual-temple
     ports:
       - "31443:31443"
-    volumes:
-      - innovanon:/usr/local/lib/node_modules/virtual-temple/ssl:ro
+    #volumes:
+    #  - innovanon:/usr/local/lib/node_modules/virtual-temple/ssl:ro
     deploy:
       mode: replicated
       replicas: 2
       #update-delay: 10s
+    secrets:
+      - key.pem
+      - cert.pem
 
 networks:
   innovanon:
 
-volumes:
-  innovanon:
+#volumes:
+#  innovanon:
+
+secrets:
+  key.pem:
+    file: ./secrets/key.pem
+  cert.pem:
+    file: ./secrets/cert.pem
 
