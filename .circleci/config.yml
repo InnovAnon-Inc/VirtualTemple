@@ -89,11 +89,12 @@ jobs:
 
 workflows:
   #version: 2
-  build:
+  deploy_and_notify:
     jobs:
       - build-test-and-notify:
           filters:
             branches:
               ignore: gh-pages
-          context: github personal access token
+          context:
+            - github personal access token
 
