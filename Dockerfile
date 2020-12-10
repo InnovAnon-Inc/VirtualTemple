@@ -3,8 +3,8 @@ FROM node:latest as builder
 RUN npm update  -g --production                         && \
     npm install -g --production node-gyp                && \
     npm install -g --production          virtual-temple && \
-    test -d  /usr/local/lib/node_modules/virtual-temple && \
-    mkdir -v /usr/local/lib/node_modules/virtual-temple/ssl
+    test -d  /usr/local/lib/node_modules/virtual-temple
+#    mkdir -v /usr/local/lib/node_modules/virtual-temple/ssl
 
 FROM node:current-alpine
 
@@ -32,7 +32,7 @@ COPY --chown=node --from=builder /usr/local/lib/node_modules/ /usr/local/lib/nod
 
 USER node
 WORKDIR /usr/local/lib/node_modules/virtual-temple
-VOLUME  /usr/local/lib/node_modules/virtual-temple/ssl
+#VOLUME  /usr/local/lib/node_modules/virtual-temple/ssl
 
 ENV NODE_ENV production
 EXPOSE 31443
